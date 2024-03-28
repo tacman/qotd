@@ -53,15 +53,19 @@ pwa:
               short_name: "Top"
               url: "qotd_index_top"
               icons:
-                  - src: "images/thumb-up.svg"
-                    sizes: 0
+                  - src: "images/thumb-up.png"
+                    sizes: 512
+                  - src: "thumb-up-96x96.png"
+                    sizes: 96
               description: "Top voted quotes"
             - name: "Flop"
               short_name: "Flop"
               url: "qotd_index_flop"
               icons:
-                  - src: "images/thumb-down.svg"
-                    sizes: 0
+                  - src: "images/thumb-down.png"
+                    sizes: 512
+                  - src: "thumb-down-96x96.png"
+                    sizes: 96
               description: "Flop voted quotes"
     serviceworker:
         enabled: true
