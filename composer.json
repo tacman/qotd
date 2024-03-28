@@ -102,6 +102,7 @@
         ],
         "compile": [
             "php -d memory_limit=512M bin/console doctrine:migrations:migrate --no-interaction",
+            "php -d memory_limit=512M bin/console importmap:install",
             "php -d memory_limit=512M bin/console asset-map:compile"
         ]
     },
