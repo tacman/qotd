@@ -32,6 +32,21 @@ pwa:
                   max_entries: 200
                   preload_urls:
                       - 'qotd_index'
+                      - path: 'qotd_index'
+                        params:
+                            page: 1
+                      - path: 'qotd_index'
+                        params:
+                            page: 2
+                      - path: 'qotd_index'
+                        params:
+                            page: 3
+                      - path: 'qotd_index'
+                        params:
+                            page: 4
+                      - path: 'qotd_index'
+                        params:
+                            page: 5
                       - 'qotd_index_top'
                       - path: 'qotd_index_top'
                         params:
