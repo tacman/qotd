@@ -16,9 +16,6 @@ pwa:
         icons:
             - src: "images/logo.svg"
               sizes: 0
-            - src: "images/logo.svg"
-              sizes: 0
-              purpose: "maskable"
             - src: icons/icon-16x16.png
               sizes: 16
               type: image/png
@@ -51,6 +48,21 @@ pwa:
               label: "QOTD from the browser"
             - src: "images/screenshot2.png"
               label: "QOTD from the mobile"
+        shortcuts:
+            - name: "Top"
+              short_name: "Top"
+              url: "qotd_index_top"
+              icons:
+                  - src: "images/thumb-up.svg"
+                    sizes: 0
+              description: "Top voted quotes"
+            - name: "Flop"
+              short_name: "Flop"
+              url: "qotd_index_flop"
+              icons:
+                  - src: "images/thumb-down.svg"
+                    sizes: 0
+              description: "Flop voted quotes"
     serviceworker:
         enabled: true
         src: "sw.js"
