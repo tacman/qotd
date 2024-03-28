@@ -16,6 +16,11 @@ pwa:
         icons:
             - src: "images/logo.svg"
               sizes: "any"
+        screenshots:
+            - src: "images/screenshot1.png"
+              label: "QOTD from the browser"
+            - src: "images/screenshot2.png"
+              label: "QOTD from the mobile"
     serviceworker:
         enabled: true
         src: "sw.js"
