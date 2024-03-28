@@ -5,8 +5,8 @@
     class="ts-qotd-{{ qotd.id }}"
     {{ tt('quote') }}
 >
-    <link rel="prefetch" href="{{ url('qotd_show', { id: qotd.id }) }}" />
-    <link rel="prefetch" href="{{ url('qotd_show_details', { id: qotd.id }) }}" />
+    <link rel="prefetch" href="{{ url('qotd_show', { id: qotd.id }) }}" as="document" />
+    <link rel="prefetch" href="{{ url('qotd_show_details', { id: qotd.id }) }}" as="document" />
     <div class="card mb-2">
         <div class="card-body">
             {{ qotd_macro.message(qotd) }}

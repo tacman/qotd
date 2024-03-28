@@ -95,7 +95,8 @@ pwa:
                       - path: 'qotd_index_not_voted'
                         params:
                             page: 5
-                  strategy: 'StaleWhileRevalidate'
+                  strategy: 'NetworkFirst'
+                  network_timeout: 1
             offline_fallback:
                 page: 'qotd_offline'
             background_sync:
