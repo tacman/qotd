@@ -7,6 +7,7 @@ use App\Repository\QotdRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -77,13 +78,27 @@ class Qotd
         $this->voterIds[$user->getUserIdentifier()] = $vote->value;
     }
 
-    public function hasVotedUp(UserInterface $user): bool
+    public function hasVotedUp(Request $request): bool
     {
+
+        $user = new User(
+            hash(
+                'sha256',
+                sprintf('%s%s%s', $request->getClientIp(), $request->headers->get('User-Agent'), $request->getLocale())
+            )
+        );
         return QotdVote::Up === $this->getVote($user);
     }
 
-    public function hasVotedDown(UserInterface $user): bool
+    public function hasVotedDown(Request $request): bool
     {
+
+        $user = new User(
+            hash(
+                'sha256',
+                sprintf('%s%s%s', $request->getClientIp(), $request->headers->get('User-Agent'), $request->getLocale())
+            )
+        );
         return QotdVote::Down === $this->getVote($user);
     }
 

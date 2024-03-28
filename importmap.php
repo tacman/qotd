@@ -66,4 +66,7 @@ return [
     'turbo-view-transitions' => [
         'version' => '0.3.0',
     ],
+    'workbox-window' => [
+        'version' => '7.0.0',
+    ],
 ];

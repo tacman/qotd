@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Qotd;
+use App\Entity\User;
 use App\Form\Model\QotdFilters;
 use App\Form\Type\QotdFiltersType;
 use App\Form\Type\QotdType;
@@ -16,8 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class QotdController extends AbstractController
 {
@@ -61,8 +60,14 @@ class QotdController extends AbstractController
     }
 
     #[Route('/not-voted', name: 'qotd_index_not_voted')]
-    public function notVoted(Request $request, #[CurrentUser] UserInterface $user): Response
+    public function notVoted(Request $request): Response
     {
+        $user = new User(
+            hash(
+                'sha256',
+                sprintf('%s%s%s', $request->getClientIp(), $request->headers->get('User-Agent'), $request->getLocale())
+            )
+        );
         $page = max(1, $request->query->getInt('page', 1));
         $pagination = $this
             ->qotdRepository
@@ -78,12 +83,14 @@ class QotdController extends AbstractController
     #[Route('/qotd/{id}/vote/up', name: 'qotd_vote_up', methods: ['POST'], defaults: ['vote' => QotdVote::Up->value])]
     #[Route('/qotd/{id}/vote/down', name: 'qotd_vote_down', methods: ['POST'], defaults: ['vote' => QotdVote::Down->value])]
     #[Route('/qotd/{id}/vote/null', name: 'qotd_vote_null', methods: ['POST'], defaults: ['vote' => QotdVote::Null->value])]
-    public function vote(Request $request, Qotd $qotd, QotdVote $vote, #[CurrentUser] UserInterface $user): Response
+    public function vote(Request $request, Qotd $qotd, QotdVote $vote): Response
     {
-        if (!$this->isCsrfTokenValid('vote', (string) $request->request->get('token'))) {
-            throw $this->createAccessDeniedException('Invalid CSRF token.');
-        }
-
+        $user = new User(
+            hash(
+                'sha256',
+                sprintf('%s%s%s', $request->getClientIp(), $request->headers->get('User-Agent'), $request->getLocale())
+            )
+        );
         $qotd->applyVote($vote, $user);
 
         $this->em->flush();

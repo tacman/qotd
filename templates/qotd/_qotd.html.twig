@@ -5,6 +5,8 @@
     class="ts-qotd-{{ qotd.id }}"
     {{ tt('quote') }}
 >
+    <link rel="prefetch" href="{{ url('qotd_show', { id: qotd.id }) }}" />
+    <link rel="prefetch" href="{{ url('qotd_show_details', { id: qotd.id }) }}" />
     <div class="card mb-2">
         <div class="card-body">
             {{ qotd_macro.message(qotd) }}
@@ -33,18 +35,16 @@
                 <div class="mx-1">
                     <a href="{{ qotd.permalink }}" class="btn btn-sm btn-outline-secondary">🔗 view in Slack</a>
                 </div>
-                <form action="{{ url(qotd.hasVotedDown(app.user) ? 'qotd_vote_null' : 'qotd_vote_down', { id: qotd.id }) }}" method="POST" class="mx-1" {{ tt('vote-down') }}>
-                    <input type="hidden" name="token" value="{{ csrf_token('vote') }}">
-                    <button type="submit" class="{{ html_classes('btn', 'btn-sm', { 'btn-outline-primary': qotd.hasVotedDown(app.user) }) }}">👎</button>
+                <form action="{{ url(qotd.hasVotedDown(app.request) ? 'qotd_vote_null' : 'qotd_vote_down', { id: qotd.id }) }}" method="POST" class="mx-1" {{ tt('vote-down') }}>
+                    <button type="submit" class="{{ html_classes('btn', 'btn-sm', { 'btn-outline-primary': qotd.hasVotedDown(app.request) }) }}">👎</button>
                 </form>
                 <div class="mx-1">
                     <span class="badge bg-primary" {{ tt('quote-vote') }}>
                         {{ qotd.vote }}
                     </span>
                 </div>
-                <form action="{{ url(qotd.hasVotedUp(app.user) ? 'qotd_vote_null' : 'qotd_vote_up', { id: qotd.id }) }}" method="POST" {{ tt('vote-up') }}>
-                    <input type="hidden" name="token" value="{{ csrf_token('vote') }}">
-                    <button type="submit" class="{{ html_classes('btn', 'btn-sm', { 'btn-outline-primary': qotd.hasVotedUp(app.user) }) }}">👍</button>
+                <form action="{{ url(qotd.hasVotedUp(app.request) ? 'qotd_vote_null' : 'qotd_vote_up', { id: qotd.id }) }}" method="POST" {{ tt('vote-up') }}>
+                    <button type="submit" class="{{ html_classes('btn', 'btn-sm', { 'btn-outline-primary': qotd.hasVotedUp(app.request) }) }}">👍</button>
                 </form>
             </div>
         </div>

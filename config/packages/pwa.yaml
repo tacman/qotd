@@ -1,0 +1,99 @@
+pwa:
+    image_processor: 'pwa.image_processor.imagick'
+    manifest:
+        enabled: true
+        background_color: "#2b2b2a"
+        theme_color: "#2b2b2a"
+        name: 'QOTD'
+        short_name: 'QOTD'
+        description: 'A simple Quote of the Day application'
+        orientation: "any"
+        display: "standalone"
+        scope: "/"
+        display_override: ['fullscreen', 'minimal-ui', 'window-controls-overlay']
+        id: "/"
+        start_url: "/"
+        icons:
+            - src: "images/logo.svg"
+              sizes: "any"
+    serviceworker:
+        enabled: true
+        src: "sw.js"
+        skip_waiting: true
+        workbox:
+            resource_caches:
+                - match_callback: 'navigate'
+                  max_age: 5 days
+                  max_entries: 200
+                  preload_urls:
+                      - 'qotd_index'
+                      - 'qotd_index_top'
+                      - path: 'qotd_index_top'
+                        params:
+                            page: 1
+                      - path: 'qotd_index_top'
+                        params:
+                            page: 2
+                      - path: 'qotd_index_top'
+                        params:
+                            page: 3
+                      - path: 'qotd_index_top'
+                        params:
+                            page: 4
+                      - path: 'qotd_index_top'
+                        params:
+                            page: 5
+                      - 'qotd_index_flop'
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 1
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 2
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 3
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 4
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 5
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 1
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 2
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 3
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 4
+                      - path: 'qotd_index_flop'
+                        params:
+                            page: 5
+                      - 'qotd_index_not_voted'
+                      - path: 'qotd_index_not_voted'
+                        params:
+                            page: 1
+                      - path: 'qotd_index_not_voted'
+                        params:
+                            page: 2
+                      - path: 'qotd_index_not_voted'
+                        params:
+                            page: 3
+                      - path: 'qotd_index_not_voted'
+                        params:
+                            page: 4
+                      - path: 'qotd_index_not_voted'
+                        params:
+                            page: 5
+                  strategy: 'StaleWhileRevalidate'
+            offline_fallback:
+                page: 'qotd_index'
+            background_sync:
+                - queue_name: 'votes'
+                  match_callback: 'startsWith: /qotd/'
+                  method: 'POST'
