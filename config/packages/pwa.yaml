@@ -14,7 +14,7 @@ pwa:
         id: "/"
         start_url: "/"
         icons:
-            - src: "images/logo.svg"
+            - src: "icons/logo.svg"
               sizes: 0
             - src: icons/icon-16x16.png
               sizes: 16
@@ -44,27 +44,27 @@ pwa:
               sizes: 1024
               type: image/png
         screenshots:
-            - src: "images/screenshot1.png"
+            - src: "icons/screenshot1.png"
               label: "QOTD from the browser"
-            - src: "images/screenshot2.png"
+            - src: "icons/screenshot2.png"
               label: "QOTD from the mobile"
         shortcuts:
             - name: "Top"
               short_name: "Top"
               url: "qotd_index_top"
               icons:
-                  - src: "images/thumb-up.png"
+                  - src: "icons/thumb-up.png"
                     sizes: 512
-                  - src: "thumb-up-96x96.png"
+                  - src: "icons/thumb-up-96x96.png"
                     sizes: 96
               description: "Top voted quotes"
             - name: "Flop"
               short_name: "Flop"
               url: "qotd_index_flop"
               icons:
-                  - src: "images/thumb-down.png"
+                  - src: "icons/thumb-down.png"
                     sizes: 512
-                  - src: "thumb-down-96x96.png"
+                  - src: "icons/thumb-down-96x96.png"
                     sizes: 96
               description: "Flop voted quotes"
     serviceworker:
