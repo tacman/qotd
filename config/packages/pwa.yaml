@@ -92,7 +92,7 @@ pwa:
                             page: 5
                   strategy: 'StaleWhileRevalidate'
             offline_fallback:
-                page: 'qotd_index'
+                page: 'qotd_offline'
             background_sync:
                 - queue_name: 'votes'
                   match_callback: 'startsWith: /qotd/'

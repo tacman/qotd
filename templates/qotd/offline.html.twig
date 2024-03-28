@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}Offline???{% endblock %}
+
+{% block body %}
+    <div class="card mb-2">
+        <div class="card-body">
+            Sorry, you are offline. Please check your internet connection and try again.
+            You may be interested in the following links:
+            <ul>
+                <li><a href="{{ path('qotd_index_top') }}">Top</a></li>
+                <li><a href="{{ path('qotd_index_flop') }}">Flop</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
