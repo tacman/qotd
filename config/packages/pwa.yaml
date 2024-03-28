@@ -15,8 +15,9 @@ pwa:
         start_url: "/"
         icons:
             - src: "images/logo.svg"
-              sizes: "any"
+              sizes: 0
             - src: "images/logo.svg"
+              sizes: 0
               purpose: "maskable"
             - src: icons/icon-16x16.png
               sizes: 16
