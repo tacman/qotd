@@ -26,16 +26,16 @@ return [
         'version' => '3.2.2',
     ],
     'chart.js/auto' => [
-        'version' => '4.4.2',
+        'version' => '4.4.3',
     ],
     '@hotwired/turbo' => [
-        'version' => '8.0.4',
+        'version' => '8.0.5',
     ],
     'stimulus-carousel' => [
         'version' => '5.0.1',
     ],
     'swiper/bundle' => [
-        'version' => '11.1.0',
+        'version' => '11.1.5',
     ],
     'ssr-window' => [
         'version' => '4.0.2',
@@ -58,16 +58,19 @@ return [
         'type' => 'css',
     ],
     'swiper/swiper-bundle.min.css' => [
-        'version' => '11.1.0',
+        'version' => '11.1.5',
         'type' => 'css',
     ],
     'turbo-view-transitions' => [
         'version' => '0.3.0',
     ],
     'workbox-window' => [
-        'version' => '7.0.0',
+        'version' => '7.1.0',
     ],
     '@kurkle/color' => [
         'version' => '0.3.2',
+    ],
+    'chart.js' => [
+        'version' => '4.4.3',
     ],
 ];
