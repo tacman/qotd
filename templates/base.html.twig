@@ -59,7 +59,7 @@
                         </div>
                     </nav>
                 {% endblock %}
-                <button class="btn btn-lg btn-success" {{ stimulus_controller('@pwa/install') }} {{ stimulus_action('@pwa/install', 'install', 'click') }}>
+                <button hidden class="btn btn-lg btn-success " {{ stimulus_controller('@pwa/install') }} {{ stimulus_action('@pwa/install', 'install', 'click') }} {{ stimulus_target('@pwa/install', 'install') }}>
                     Install
                 </button>
                 <button class="btn btn-lg btn-info" {{ stimulus_controller('@pwa/share') }} {{ stimulus_action('@pwa/share', 'share', 'click', {data: {
