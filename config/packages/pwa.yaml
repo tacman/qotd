@@ -1,5 +1,8 @@
 pwa:
     image_processor: 'pwa.image_processor.imagick'
+    favicons:
+        enabled: true
+        src: "icons/logo.svg"
     manifest:
         enabled: true
         background_color: "#2b2b2a"

@@ -11,7 +11,7 @@
         {% block javascripts %}
             {{ importmap('app') }}
         {% endblock %}
-        {{ pwa() }}
+        {{ pwa(injectIcons: false) }}
     </head>
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
@@ -59,10 +59,25 @@
                         </div>
                     </nav>
                 {% endblock %}
-
+                <button class="btn btn-lg btn-success" {{ stimulus_controller('@pwa/install') }} {{ stimulus_action('@pwa/install', 'install', 'click') }}>
+                    Install
+                </button>
+                <button class="btn btn-lg btn-info" {{ stimulus_controller('@pwa/share') }} {{ stimulus_action('@pwa/share', 'share', 'click', {data: {
+                    title: 'QOTD meets PWA',
+                    text: 'QOTD is a Progressive Web App',
+                    url: '{{ path("qotd_index") }}'
+                }}) }}>
+                    Share
+                </button>
+                <div class="alert alert-info" role="alert" {{ stimulus_controller('@pwa/connection-status') }}>
+                    <span {{ stimulus_target('@pwa/connection-status', 'message') }}>
+                        We are trying to guess what is the current status of your Internet connection
+                    </span>
+                </div>
                 {% block body %}{% endblock %}
             </div>
         </main>
+
         <div {{ stimulus_controller('modal') }}>
             <turbo-frame id="modal" {{ stimulus_target('modal', 'frame') }} />
             <template {{ stimulus_target('modal', 'loadingTemplate') }}>
