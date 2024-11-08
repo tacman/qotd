@@ -65,7 +65,7 @@
                 <button class="btn btn-lg btn-info" {{ stimulus_controller('@pwa/share') }} {{ stimulus_action('@pwa/share', 'share', 'click', {data: {
                     title: 'QOTD meets PWA',
                     text: 'QOTD is a Progressive Web App',
-                    url: '{{ path("qotd_index") }}'
+                    url: path('qotd_index')
                 }}) }}>
                     Share
                 </button>
